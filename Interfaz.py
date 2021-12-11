@@ -6,6 +6,7 @@ from Crypto.PublicKey import RSA
 
 import Firmar as firmar
 import Cifrado as cifrado
+import Ambos as ambos
 
 def generarLlaves(nombre):
     if(nombre):
@@ -43,7 +44,7 @@ btnFirmar.place(x=150, y=200)
 btnCifrar = Button( text='Cifrado',bg="#26c6da", width=20, padx=10, pady=10, command=lambda: cifrado.createCipherWindow(ventana))
 btnCifrar.place(x=400,y=200)
 
-btnAmbos = Button( text='Firma y Cifrado',bg="#26c6da", width=20, padx=10, pady=10)
+btnAmbos = Button( text='Firma y Cifrado',bg="#26c6da", width=20, padx=10, pady=10, command=lambda: ambos.createBothWindow(ventana))
 btnAmbos.place(x=250,y=300)
 
 ventana.mainloop()
