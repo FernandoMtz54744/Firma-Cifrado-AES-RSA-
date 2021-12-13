@@ -87,7 +87,7 @@ def cifrarFirmar():
     if(dirArchivo and dirPrivateKey and dirPublicKey):
         datosCifrado = cifrar()
         firma = firmar()
-        with open(dirArchivo+"_CF", "wb") as archivoDestino:
+        with open(dirArchivo.replace(".txt","_CF.txt"), "wb") as archivoDestino:
             archivoDestino.write(datosCifrado["iv"]) #Se escribe el vector de inicializacion
             archivoDestino.write(datosCifrado["textoCifrado"]) #Se escribe el texto cifrado
             archivoDestino.write("-----".encode("UTF-8")) #Se escribe el delimitador del texto
@@ -103,7 +103,7 @@ def descifrarVerificar():
     if(dirArchivoRecibido and dirPrivateKey and dirPublicKey):
         mensaje = descifrar()
         firmaValida = verificar(mensaje)
-        with open(dirArchivoRecibido+"_DV", "w") as archivoDestino:
+        with open(dirArchivoRecibido.replace(".txt","_DV.txt"), "w") as archivoDestino:
             archivoDestino.write(mensaje) #Se escribe el mensaje descrifrado
         messagebox.showinfo("Valida", "El archivo ha sido descifrado")
         if(firmaValida):
